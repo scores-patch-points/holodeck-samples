@@ -31,6 +31,7 @@ Sources that describe the same real thing and do not fully agree:
 | *Die Katastrophe der Titanic* (1912), 90 s, with captions read from the film's title cards | Internet Archive `silent-die-katastrophe-der-titanic`; clip + captions on the VM | public domain |
 | Titanic genuine footage (1911–12), 64 s, no transcript yet | Internet Archive `titanic-disaster-genuine-footage-1911-1912`; clip on the VM | public domain |
 | "Stand To Your Post" — a 1912 tribute record | Internet Archive `stand-to-your-post`; mp3 on the VM | public domain (pre-1923 recording) |
+| *Titanic* — shooting script, James Cameron (1997) | scriptslug.com PDF (excerpt) | **© Twentieth Century Fox / Paramount — all rights reserved; reference excerpt** |
 
 Machine-derived readings (the Senate speech, the front page, the film's
 captions) say so in their notes. The long reports are excerpted to what the
