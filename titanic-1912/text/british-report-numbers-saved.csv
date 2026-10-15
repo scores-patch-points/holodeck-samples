@@ -1,0 +1,25 @@
+section,group,aboard,saved,percent_saved
+First class,Adult males,175,57,32.57
+First class,Adult females,144,140,97.22
+First class,Male children (all saved),5,5,
+First class,Female children (all saved),1,1,
+First class,Total passengers,325,203,62.46
+Second class,Adult males,168,14,8.33
+Second class,Adult females,93,80,86.02
+Second class,Male children (all saved),11,11,
+Second class,Female children (all saved),13,13,
+Second class,Total passengers,285,118,41.40
+Third class,Adult males,462,75,16.23
+Third class,Adult females,165,76,46.06
+Third class,Male children,48,13,27.08
+Third class,Female children,31,14,45.16
+Third class,Total passengers,706,178,25.21
+Passengers,Total,1316,499,37.94
+Crew,Deck department,66,43,65.15
+Crew,Engine-room department,325,72,22.15
+Crew,Victualing department,494,97,19.63
+Crew,Total,885,212,23.95
+Passengers and crew,Total on board saved,2201,711,32.30
+Passengers and crew,Adult males,1667,338,20.27
+Passengers and crew,Adult females,425,316,74.35
+Passengers and crew,Children,109,57,52.29
