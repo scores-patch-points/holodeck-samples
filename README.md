@@ -25,6 +25,7 @@ Sources that describe the same real thing and do not fully agree:
 | *Loss of the Steamship "Titanic": Report of a Formal Investigation* (Board of Trade, 1912) | Project Gutenberg #39415 (excerpt) | public domain |
 | Lawrence Beesley, *The Loss of the S. S. Titanic* (1912) | Project Gutenberg #6675 (excerpt) | public domain |
 | *Sinking of the Titanic and Great Sea Disasters*, ed. Logan Marshall (1912) | Project Gutenberg #781 (excerpt) | public domain |
+| John Bernard Walker, *An Unsinkable Titanic: Every Ship its own Lifeboat* (1912) | Project Gutenberg #46219 (excerpt) | public domain |
 | the report's own "Numbers saved" table | transcribed from the report | public domain |
 | New-York Tribune front page, April 15, 1912 — the scan and what OCR read in it | Library of Congress scan; machine OCR (tesseract) | public domain |
 | *Die Katastrophe der Titanic* (1912), 90 s, with captions read from the film's title cards | Internet Archive `silent-die-katastrophe-der-titanic`; clip + captions on the VM | public domain |
