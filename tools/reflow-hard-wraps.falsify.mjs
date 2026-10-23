@@ -324,9 +324,12 @@ if (SRC.whitman) { // Gutenberg's hanging indent: a line indented six spaces con
     const missed = scored.filter((d) => !d.join);
     for (const d of missed.slice(0, verbose ? 30 : 4)) console.log(`       missed: ${d.why} | ${JSON.stringify(d.A.slice(-50))} ‖ ${JSON.stringify(d.B.slice(0, 30))}`);
   }
-  // the target is judged on the committed (hard-wrapped) reading 7; the working copy, once rewritten, must be a
-  // fixed point: a second pass joins nothing
-  const r = reflow((head || now).readings[7].html);
+  // the target is judged on the script as it was before the reflow landed (commit aa9328c, pinned the way the
+  // Gutenberg originals are pinned to 3a41527^; HEAD moved when the reflow was committed); the working copy must
+  // be a fixed point: a second pass joins nothing
+  let orig = null;
+  try { orig = JSON.parse(execSync('git show aa9328c:titanic-1912/readings.json', { cwd: REPO }).toString()); } catch (e) {}
+  const r = reflow((orig || now).readings[7].html);
   const again = reflow(now.readings[7].html);
   const fixedPoint = again.html === now.readings[7].html && again.measures.brOut === again.measures.brIn;
   const outBlocks = [...r.html.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)].map((m) => plain(m[1]));
@@ -343,11 +346,11 @@ if (SRC.whitman) { // Gutenberg's hanging indent: a line indented six spaces con
     const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
     const others = head.readings.every((hr, i) => i === 7 ? same({ ...hr, html: null }, { ...now.readings[i], html: null }) : same(hr, now.readings[i]));
     const top = same({ ...head, readings: null }, { ...now, readings: null }) && head.readings.length === now.readings.length;
-    untouched = others && top ? (head.readings[7].html === now.readings[7].html ? 'identical to HEAD (reading 7 not rewritten yet)' : 'only reading 7 html differs from HEAD') : 'SOMETHING OUTSIDE READING 7 DIFFERS FROM HEAD';
+    untouched = others && top ? (head.readings[7].html === now.readings[7].html ? 'identical to HEAD' : 'only reading 7 html differs from HEAD') : 'SOMETHING OUTSIDE READING 7 DIFFERS FROM HEAD';
   }
   const pass = castOne && cuesJoined.length === 0 && actionJoined >= 0.95 && fixedPoint && !/SOMETHING/.test(untouched);
   results.push({ name: 'Screenplay reading 7', kind: 'S', pass });
-  console.log(`${pass ? 'PASS' : 'FAIL'} S ${'Screenplay reading 7 (the target)'.padEnd(46)} on HEAD: cast block one line ${castOne}; short all-caps cues joined ${cuesJoined.length}/${cues.length}; wide-column breaks not ending a unit joined ${(100 * actionJoined).toFixed(1)}%; columns ${r.measures.clusters.map((c) => c.column ?? '—').join(' ')}; <br> ${r.measures.brIn} → ${r.measures.brOut}`);
+  console.log(`${pass ? 'PASS' : 'FAIL'} S ${'Screenplay reading 7 (the target)'.padEnd(46)} on ${orig ? 'aa9328c' : 'the working copy'}: cast block one line ${castOne}; short all-caps cues joined ${cuesJoined.length}/${cues.length}; wide-column breaks not ending a unit joined ${(100 * actionJoined).toFixed(1)}%; columns ${r.measures.clusters.map((c) => c.column ?? '—').join(' ')}; <br> ${r.measures.brIn} → ${r.measures.brOut}`);
   console.log(`       working copy: ${untouched}; a second pass ${fixedPoint ? 'joins nothing (fixed point)' : 'STILL CHANGES IT (' + again.measures.brIn + ' → ' + again.measures.brOut + ')'}`);
   if (cast) console.log(`       cast: ${collapse(cast)}`);
   for (const d of cuesJoined.slice(0, 6)) console.log(`       cue joined: ${JSON.stringify(d.A)} ‖ ${JSON.stringify(d.B.slice(0, 30))}`);
